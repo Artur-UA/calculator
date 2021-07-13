@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="all"/>
+<title>Расчет стоимости</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE">
+<link href="calc_glass2.css" rel="stylesheet"  type="text/css" />
+<script src="jquery.min.js"></script>
+<script src="https://code.createjs.com/easeljs-0.8.1.min.js"></script>
+<script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
+<script src="https://code.createjs.com/movieclip-0.8.1.min.js"></script>
+<link rel="stylesheet" href="styles.scss.css">
+<script src="main.js" charset="utf-8"></script>
+ 
+
+<script>
+$(function(){
+	$('mymenu').s3MenuAllIn({
+	    type: 'bottom',
+	    debug: true
+	});    
+	$('.form_ax_but').click(function(){
+		myo.open({
+			iframe:"/zadat-vopros-1", 
+			width:"500px"
+		});
+	})
+})
+
+
+
+$(function(){
+	$('#mymenu ul').parent().each(function() {
+		var o = $(this);
+		var s = o.find('>ul');
+		var l = o.parents('ul').length;
+		var k = false;
+		o.hover(
+			function() {
+				o.find('>a').attr('class','over');
+				for (i=$('#mymenu ul').length; i>=0; i--){
+				o.parent().find('>li').not(o).find('ul').eq(i).css({
+					opacity: '0',
+					visibility: 'hidden'
+				});
+				}
+				k = true;
+				setTimeout(function(){
+				
+					s.css({
+						//display: "flex",
+						opacity: '1',
+						visibility: 'visible'
+					});
+				}, 500)
+			},
+			function() {
+				o.find('>a').attr('class','normal');
+				k = false;
+				window.setTimeout(function() {
+					//if (!k) s.hide(); 	
+					s.css({
+						//display: "flex",
+						opacity: '0',
+						visibility: 'hidden'
+					});
+				}, 500);
+			}
+		);
+	});
+})
+
+</script>
+
+
+</head>
+<body>
+
+	    	
+        <main role="main" class="main">
+            <div class="content">
+                <div class="content-inner">
+				<h1 style="text-align: center">Расчет стоимости</h1>
+                    
+<link rel="stylesheet" href="glass_calc.css">
+	<script src="glass_calc.js"></script>
+	
+		<div class="glass_calc">
+		<table>
+			<tr>
+				<td>
+				<div class="z1z">
+				<div class="g_w_glass" id="material">
+					<div class="g_title">Материал:</div>
+					<select>
+						<option class="m_1" value="">Стекло</option>
+						<option class="m_2" value="">Зеркало</option>
+					</select>
+				</div>
+
+
+				<div class="g_param-wr">
+					<div class="g_param" id="g_width">
+						<div class="g_title">Ширина (мм)</div>
+              <input min="60" max="3210" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+						<!-- <input type="text" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" />		 -->			</div>
+					<div class="g_param" id="g_height">
+						<div class="g_title">Высота (мм)</div>
+							<input min="60" max="2250" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+						<!-- <input type="text" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" />					</div> -->
+				</div>
+				</div>
+				</td>
+			</tr>
+
+			<tr>
+				<td style="height: 16px;"><br /></td>
+			</tr>
+
+      <tr>
+        <td>
+          <div class="g_w_glass" id="thickness">
+            <div class="g_title">Толщина:</div>
+              <select class="select_sel m_1">
+                <option data-ves="10" value="1200">Прозрачное 4 мм</option>
+                <option data-ves="12.5" value="1500">Прозрачное 5 мм</option>
+                <option data-ves="16.5" value="1600">Прозрачное 6 мм</option>
+                <option data-ves="20" value="2500">Прозрачное 8 мм</option>
+                <option data-ves="25" value="3000">Прозрачное 10 мм</option>
+                <option data-ves="25" value="3000">Прозрачное 12 мм</option>
+                <option data-ves="25" value="3000">Прозрачное 15 мм</option>
+                <option data-ves="25" value="3000">Прозрачное 19 мм</option>
+                <option data-ves="10" value="2500">Осветленное (оптивайт) 4 мм</option>
+                <option data-ves="12.5" value="3500">Осветленное (оптивайт) 5 мм</option>
+                <option data-ves="15" value="4000">Осветленное (оптивайт) 6 мм</option>
+                <option data-ves="20" value="4500">Осветленное (оптивайт) 8 мм</option>
+                <option data-ves="25" value="5000">Осветленное (оптивайт) 10 мм</option>
+                <option data-ves="25" value="5000">Осветленное (оптивайт) 12 мм</option>
+                <option data-ves="25" value="5000">Осветленное (оптивайт) 15 мм</option>
+                <option data-ves="25" value="5000">Осветленное (оптивайт) 19 мм</option>
+                <option data-ves="25" value="5000">Тонированное в массе (бронза) 4 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (бронза) 6 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (бронза) 8 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (бронза) 10 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (серое) 4 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (серое) 6 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (серое) 8 мм </option>
+                <option data-ves="25" value="5000">Тонированное в массе (серое) 10 мм </option>
+                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 4 мм </option>
+                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 6 мм </option>
+                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 8 мм </option>
+                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 10 мм </option>
+                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 4 мм </option>
+                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 6 мм </option>
+                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 8 мм </option>
+                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 4 мм </option>
+                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 6 мм </option>
+                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 8 мм </option>
+                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 10 мм </option>
+                <option data-ves="25" value="5000">Сатинато серое (матовое серое) 6 мм </option>
+                <option data-ves="25" value="5000">Сатинато серое (матовое серое) 8 мм </option>
+                <option data-ves="25" value="5000">Зеркальное стекло Mirropane Chrome Plus 8 мм </option>
+                <option data-ves="25" value="5000">Зеркальное стекло Mirropane Chrome Plus 10 мм </option>
+              </select>
+  
+              <select class="select_sel m_2">
+                <option data-ves="11" value="1700">Серебро 4 мм</option>
+                <option data-ves="16.5" value="2100">Серебро 6 мм</option>
+                <option data-ves="11" value="5500">Осветленное (оптивайт) 4 мм</option>
+                <option data-ves="16.5" value="6500">Осветленное (оптивайт) 6 мм</option>
+                <option data-ves="11" value="1600">Бронза 4 мм</option>
+                <option data-ves="11" value="1600">Графит 4 мм</option>
+                <option data-ves="11" value="2500">Золото 4 мм</option>
+                <option data-ves="11" value="7800">Заводское состаренное (10 видов) 4 мм</option>
+              </select>					
+          </div>
+
+          <div class="g_w_glass"> <img class="img_type_glass" src="./img/прозрачное.jpg" alt="тип"></div>
+        </td>
+      </tr>
+
+
+			<tr>
+				<td style="height: 16px;"><br /></td>
+			</tr>
+
+      <tr>
+        <td>
+          <div class="" id="form_figure">
+            <div class="g_title figure_blok">Форма изделия:</div>
+            <div class="figure_blok" >
+            
+              <div class="form_figure">
+                <span>Прямоугольник</span>
+                <img class="form_izdelia" src="./img/kvadrat.png" alt="">
+              </div>
+              <div class="form_figure">
+                <span>Фигура</span>
+                <img class="form_izdelia" src="./img/figura.png" alt="">
+              </div>
+              <div class="form_figure">
+                <span>Округлый</span>
+                <img class="form_izdelia" src="./img/krug.png" alt="">
+              </div>
+
+            </div>
+          </div>
+        </td>
+      </tr>
+      <tr>
+				<td style="height: 16px;"><br /></td>
+			</tr>
+			<tr>
+				<td>
+				<div style="display: inline-block; vertical-align: top;">
+				<div class="g_w_glass" id="edging">
+					<div class="g_title">Обработка кромки:</div>
+					<select>
+              <option value="150">Полировка</option>
+              <option value="150">Шлифовка</option>
+              <option value="0">Без обработки</option>
+          </select>
+				</div>
+				<div class="g_w_glass" id="w_facet">
+					<div class="g_title" >Фацет:</div>
+					<select class="sell1" >
+						<option value="150">10 мм</option>
+            <option value="150">15 мм</option>
+            <option value="150">20 мм</option>
+            <option value="150">25-30 мм</option>
+            <option value="150">35 мм</option>
+					</select>
+        </div>
+        </div>
+
+<!-- 					<select class="sell2" style="display: none;">
+													<option value="270">до 10 мм</option>
+													<option value="350">10-15 мм</option>
+													<option value="400">16-20 мм</option>
+													<option value="500">21-25 мм</option>
+													<option value="600">26-30 мм</option>
+													<option value="900">31-35 мм</option>
+													<option value="1100">36-40 мм</option>
+													<option value="800">41-45 мм</option>
+													<option value="1200">46-50 мм</option>
+													<option value="1600">51-55 мм</option>
+											</select>
+				
+				<div class="checkbox">
+					<div style="margin-bottom: 6px;">
+						<span class="g_tit">Защитная пленка</span>
+						<span style="position: relative; bottom: -2px;">
+							<input id="check1" type="checkbox" name="check" value="500">
+							<label for="check1">Checkbox No. 1</label>	
+						</span>
+					</div>
+
+					<div style="margin-bottom: 6px;">
+						<span class="g_tit">Упаковка в картон</span>
+						<span style="position: relative; bottom: -2px;">
+							<input id="check2" type="checkbox" name="check" value="200">
+							<label for="check2">Checkbox No. 2</label>
+						</span>
+					</div>
+					
+					<div class="zakalka">
+						<span class="g_tit">Закалка</span>
+						<span style="position: relative; bottom: -2px;">
+							<input disabled="disabled" id="check222" type="checkbox" name="check" value="850">
+							<label for="check222">Checkbox No. 2</label>
+						</span>
+					</div>
+					
+				</div> -->
+				</td>
+			</tr>
+
+      
+
+			<tr>
+				<td class="w_g_diam">
+					<div class="g_diam">
+						<div class="g_param g_dd" id="g_d">
+							<div class="g_title">Диаметр отверстия:</div>
+							<input min="4" max="70" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+						</div>
+						<div class="g_param g_cc" id="g_c">
+							<div class="g_title">Количество отверстий:</div>
+							<input onchange="isright(this);" min="0" max="9999999" type="number" value="0" /><span>шт</span>
+						</div>
+<!-- 						<div class="zenkovka">
+						<div class="checkbox">
+							<span class="g_tit" title="Шлифовка внутренней стороны отверстия">Зенковка</span>
+							<span style="position: relative; bottom: -2px;">
+								<input id="ch" type="checkbox" name="checks" value="100">
+								<label for="ch">Checkbox</label>
+							</span>
+						</div>
+						</div>
+						<div class="del"></div>
+						<div class="z_add"></div>
+													<div class="cc" data-ot="0" data-do="12" data-sum="80"></div>
+													<div class="cc" data-ot="13" data-do="30" data-sum="140"></div>
+													<div class="cc" data-ot="31" data-do="70" data-sum="200"></div>
+													<div class="cc" data-ot="71" data-do="90" data-sum="400"></div> -->
+											</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="virez">
+						<span class="v_title">Вырезы:</span>
+						<span class="in1">
+							<input onchange="isright(this);" min="0" max="9999999" class="vnu" type="number" data-vnut="800" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" /> <div class="sa1">шт</div>
+						</span>
+            <div class="g_param">
+              <label class="zakalka_label"for="zakalka">Закалка</label>
+              <input class="zakalka_input" type="checkbox" id="zakalka" name="zakalka">
+            </div>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="deliverys">Доставка:</div>
+					<div class="deliv_type" data-dos1="1500" data-dos2="3000" data-dos3="30" data-minimal="1000" data-maximum="1800">
+						<select>
+							<option value="1">по Москве в пределах МКАД (без въезда в ТТК)</option>
+							<option value="2">по Москве (внутри ТТК)</option>
+              <option value="3">за пределы МКАД</option>
+							<option value="4">Самовывоз</option>
+						</select>
+					</div>
+					<div class="deliverys2">Расстояние от мкад:<br />
+					<span class="aaa">
+						<span class="in5">
+							<input min="0" max="100" onchange="isright(this);" value="0" type="number" /> <span class="sa1">км.</span>
+						</span>
+					</span>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="total_price">
+			<span class="itogo">Итого:</span>
+			<span class="all_price">0</span>
+			<span> рублей</span>
+			<div class="ves">Вес изделия: <span class="vv">0</span> <span>кг</span></div>
+		</div>
+
+    <div class="zakaz"><button class="price">Рассчитать стоимость</button><button class="make_a_purchase">Сделать заказ</button></div>
+    <div class="amount_sum"></div>
+
+	</div>
+	
+
+</div> <!-- .content-inner -->
+            </div> <!-- .content -->
+        </main> <!-- .main -->
+    </div> <!-- .content-wrapper -->
+</div> <!-- .site-wrapper -->
+
+</body>
+</html>
