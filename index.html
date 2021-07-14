@@ -14,6 +14,8 @@
 <script src="https://code.createjs.com/movieclip-0.8.1.min.js"></script>
 <link rel="stylesheet" href="styles.scss.css">
 <script src="main.js" charset="utf-8"></script>
+<script src="./s3.includeform.js"></script>
+
  
 
 <script>
@@ -105,11 +107,11 @@ $(function(){
 				<div class="g_param-wr">
 					<div class="g_param" id="g_width">
 						<div class="g_title">Ширина (мм)</div>
-              <input min="60" max="3210" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+              <input min="60" max="3210" onchange="isright(this);" class="pr" type="number" value="0" id="width_par"/><span>мм</span>
 						<!-- <input type="text" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" />		 -->			</div>
 					<div class="g_param" id="g_height">
 						<div class="g_title">Высота (мм)</div>
-							<input min="60" max="2250" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+							<input min="60" max="2250" onchange="isright(this);" class="pr" type="number" value="0" id="height_par"/></><span>мм</span>
 						<!-- <input type="text" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" />					</div> -->
 				</div>
 				</div>
@@ -125,56 +127,56 @@ $(function(){
           <div class="g_w_glass" id="thickness">
             <div class="g_title">Толщина:</div>
               <select class="select_sel m_1">
-                <option data-ves="10" value="1200">Прозрачное 4 мм</option>
-                <option data-ves="12.5" value="1500">Прозрачное 5 мм</option>
-                <option data-ves="16.5" value="1600">Прозрачное 6 мм</option>
-                <option data-ves="20" value="2500">Прозрачное 8 мм</option>
-                <option data-ves="25" value="3000">Прозрачное 10 мм</option>
-                <option data-ves="25" value="3000">Прозрачное 12 мм</option>
-                <option data-ves="25" value="3000">Прозрачное 15 мм</option>
-                <option data-ves="25" value="3000">Прозрачное 19 мм</option>
-                <option data-ves="10" value="2500">Осветленное (оптивайт) 4 мм</option>
-                <option data-ves="12.5" value="3500">Осветленное (оптивайт) 5 мм</option>
-                <option data-ves="15" value="4000">Осветленное (оптивайт) 6 мм</option>
-                <option data-ves="20" value="4500">Осветленное (оптивайт) 8 мм</option>
-                <option data-ves="25" value="5000">Осветленное (оптивайт) 10 мм</option>
-                <option data-ves="25" value="5000">Осветленное (оптивайт) 12 мм</option>
-                <option data-ves="25" value="5000">Осветленное (оптивайт) 15 мм</option>
-                <option data-ves="25" value="5000">Осветленное (оптивайт) 19 мм</option>
-                <option data-ves="25" value="5000">Тонированное в массе (бронза) 4 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (бронза) 6 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (бронза) 8 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (бронза) 10 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (серое) 4 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (серое) 6 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (серое) 8 мм </option>
-                <option data-ves="25" value="5000">Тонированное в массе (серое) 10 мм </option>
-                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 4 мм </option>
-                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 6 мм </option>
-                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 8 мм </option>
-                <option data-ves="25" value="5000">Сатинато б/цв (матовое) 10 мм </option>
-                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 4 мм </option>
-                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 6 мм </option>
-                <option data-ves="25" value="5000">Сатинато осветленное (матовое оптивай) 8 мм </option>
-                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 4 мм </option>
-                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 6 мм </option>
-                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 8 мм </option>
-                <option data-ves="25" value="5000">Сатинато бронза (матовое бронза) 10 мм </option>
-                <option data-ves="25" value="5000">Сатинато серое (матовое серое) 6 мм </option>
-                <option data-ves="25" value="5000">Сатинато серое (матовое серое) 8 мм </option>
-                <option data-ves="25" value="5000">Зеркальное стекло Mirropane Chrome Plus 8 мм </option>
-                <option data-ves="25" value="5000">Зеркальное стекло Mirropane Chrome Plus 10 мм </option>
+                <option data-ves="10" value="788">Прозрачное 4 мм</option>
+                <option data-ves="12.5" value="938">Прозрачное 5 мм</option>
+                <option data-ves="16.5" value="1075">Прозрачное 6 мм</option>
+                <option data-ves="20" value="1513">Прозрачное 8 мм</option>
+                <option data-ves="25" value="1800">Прозрачное 10 мм</option>
+                <option data-ves="25" value="2875">Прозрачное 12 мм</option>
+                <option data-ves="25" value="6325">Прозрачное 15 мм</option>
+                <option data-ves="25" value="10062">Прозрачное 19 мм</option>
+                <option data-ves="10" value="2038">Осветленное (оптивайт) 4 мм</option>
+                <option data-ves="12.5" value="2544">Осветленное (оптивайт) 5 мм</option>
+                <option data-ves="15" value="2888">Осветленное (оптивайт) 6 мм</option>
+                <option data-ves="20" value="4263">Осветленное (оптивайт) 8 мм</option>
+                <option data-ves="25" value="5156">Осветленное (оптивайт) 10 мм</option>
+                <option data-ves="25" value="6875">Осветленное (оптивайт) 12 мм</option>
+                <option data-ves="25" value="11250">Осветленное (оптивайт) 15 мм</option>
+                <option data-ves="25" value="13750">Осветленное (оптивайт) 19 мм</option>
+                <option data-ves="25" value="1444">Тонированное в массе (бронза) 4 мм </option>
+                <option data-ves="25" value="2063">Тонированное в массе (бронза) 6 мм </option>
+                <option data-ves="25" value="2613">Тонированное в массе (бронза) 8 мм </option>
+                <option data-ves="25" value="3438">Тонированное в массе (бронза) 10 мм </option>
+                <option data-ves="25" value="1169">Тонированное в массе (серое) 4 мм </option>
+                <option data-ves="25" value="1788">Тонированное в массе (серое) 6 мм </option>
+                <option data-ves="25" value="3094">Тонированное в массе (серое) 8 мм </option>
+                <option data-ves="25" value="3438">Тонированное в массе (серое) 10 мм </option>
+                <option data-ves="25" value="1169">Сатинато б/цв (матовое) 4 мм </option>
+                <option data-ves="25" value="1788">Сатинато б/цв (матовое) 6 мм </option>
+                <option data-ves="25" value="2613">Сатинато б/цв (матовое) 8 мм </option>
+                <option data-ves="25" value="3163">Сатинато б/цв (матовое) 10 мм </option>
+                <option data-ves="25" value="3200">Сатинато осветленное (матовое оптивай) 4 мм </option>
+                <option data-ves="25" value="3919">Сатинато осветленное (матовое оптивай) 6 мм </option>
+                <option data-ves="25" value="5432">Сатинато осветленное (матовое оптивай) 8 мм </option>
+                <option data-ves="25" value="2200">Сатинато бронза (матовое бронза) 4 мм </option>
+                <option data-ves="25" value="2890">Сатинато бронза (матовое бронза) 6 мм </option>
+                <option data-ves="25" value="3988">Сатинато бронза (матовое бронза) 8 мм </option>
+                <option data-ves="25" value="4813">Сатинато бронза (матовое бронза) 10 мм </option>
+                <option data-ves="25" value="3875">Сатинато серое (матовое серое) 6 мм </option>
+                <option data-ves="25" value="4263">Сатинато серое (матовое серое) 8 мм </option>
+                <option data-ves="25" value="9625">Зеркальное стекло Mirropane Chrome Plus 8 мм </option>
+                <option data-ves="25" value="11000">Зеркальное стекло Mirropane Chrome Plus 10 мм </option>
               </select>
   
               <select class="select_sel m_2">
-                <option data-ves="11" value="1700">Серебро 4 мм</option>
-                <option data-ves="16.5" value="2100">Серебро 6 мм</option>
-                <option data-ves="11" value="5500">Осветленное (оптивайт) 4 мм</option>
-                <option data-ves="16.5" value="6500">Осветленное (оптивайт) 6 мм</option>
-                <option data-ves="11" value="1600">Бронза 4 мм</option>
-                <option data-ves="11" value="1600">Графит 4 мм</option>
-                <option data-ves="11" value="2500">Золото 4 мм</option>
-                <option data-ves="11" value="7800">Заводское состаренное (10 видов) 4 мм</option>
+                <option data-ves="11" value="1375">Серебро 4 мм</option>
+                <option data-ves="16.5" value="2063">Серебро 6 мм</option>
+                <option data-ves="11" value="3988">Осветленное (оптивайт) 4 мм</option>
+                <option data-ves="16.5" value="5363">Осветленное (оптивайт) 6 мм</option>
+                <option data-ves="11" value="1963">Бронза 4 мм</option>
+                <option data-ves="11" value="1963">Графит 4 мм</option>
+                <option data-ves="11" value="5225">Золото 4 мм</option>
+                <option data-ves="11" value="8250">Заводское состаренное (10 видов) 4 мм</option>
               </select>					
           </div>
 
@@ -218,20 +220,20 @@ $(function(){
 				<div style="display: inline-block; vertical-align: top;">
 				<div class="g_w_glass" id="edging">
 					<div class="g_title">Обработка кромки:</div>
-					<select>
-              <option value="150">Полировка</option>
-              <option value="150">Шлифовка</option>
-              <option value="0">Без обработки</option>
-          </select>
+					<select class="treatment">
+						<option value="1">Полировка</option>
+						<option value="2">Шлифовка</option>
+						<option value="0">Без обработки</option>
+					</select>
 				</div>
 				<div class="g_w_glass" id="w_facet">
 					<div class="g_title" >Фацет:</div>
 					<select class="sell1" >
-						<option value="150">10 мм</option>
-            <option value="150">15 мм</option>
-            <option value="150">20 мм</option>
-            <option value="150">25-30 мм</option>
-            <option value="150">35 мм</option>
+						<option value="182">10 мм</option>
+						<option value="182">15 мм</option>
+						<option value="219">20 мм</option>
+						<option value="300">25-30 мм</option>
+						<option value="413">35 мм</option>
 					</select>
         </div>
         </div>
@@ -353,7 +355,13 @@ $(function(){
 		</div>
 
     <div class="zakaz"><button class="price">Рассчитать стоимость</button><button class="make_a_purchase">Сделать заказ</button></div>
-    <div class="amount_sum"></div>
+    <div class="amount_sum"><span></span></div>
+	<div style="text-align: right;">
+		<div class="frm_bot"></div>
+		<div style="text-align: left; width: 674px; margin: 0 auto;" class="star_text">
+			* итоговая стоимость изделия может отличаться от расчетной<br />
+			** окончательную стоимость уточняйте у менеджеров после отправления заявки
+		</div>
 
 	</div>
 	
@@ -365,4 +373,5 @@ $(function(){
 </div> <!-- .site-wrapper -->
 
 </body>
+<script src="calc.js"></script>
 </html>
