@@ -288,11 +288,11 @@ $(function(){
 					<div class="g_diam">
 						<div class="g_param g_dd" id="g_d">
 							<div class="g_title">Диаметр отверстия:</div>
-							<input min="4" max="70" onchange="isright(this);" class="pr" type="number" value="0" /><span>мм</span>
+							<input min="3" max="90" onchange="isright(this);" class="pr" id="otverst"type="number" value="0" /><span>мм</span>
 						</div>
 						<div class="g_param g_cc" id="g_c">
 							<div class="g_title">Количество отверстий:</div>
-							<input onchange="isright(this);" min="0" max="9999999" type="number" value="0" /><span>шт</span>
+							<input onchange="isright(this);" min="0" max="9999999" type="number" value="0" class="prs" /><span>шт</span>
 						</div>
 <!-- 						<div class="zenkovka">
 						<div class="checkbox">
@@ -320,8 +320,34 @@ $(function(){
 							<input onchange="isright(this);" min="0" max="9999999" class="vnu" type="number" data-vnut="800" onblur="this.value=this.value==''?'0':this.value;" onfocus="this.value=this.value=='0'?'':this.value;" value="0" /> <div class="sa1">шт</div>
 						</span>
             <div class="g_param">
-              <label class="zakalka_label"for="zakalka">Закалка</label>
-              <input class="zakalka_input" type="checkbox" id="zakalka" name="zakalka">
+				<div class="checkbox">
+					<!-- <div style="margin-bottom: 6px;">
+						<span class="g_tit">Защитная пленка</span>
+						<span style="position: relative; bottom: -2px;">
+							<input id="check1" type="checkbox" name="check" value="500">
+							<label for="check1">Checkbox No. 1</label>	
+						</span>
+					</div>
+
+					<div style="margin-bottom: 6px;">
+						<span class="g_tit">Упаковка в картон</span>
+						<span style="position: relative; bottom: -2px;">
+							<input id="check2" type="checkbox" name="check" value="200">
+							<label for="check2">Checkbox No. 2</label>
+						</span>
+					</div> -->
+					
+					<div class="zakalka">
+						<span class="g_tit">Закалка</span>
+						<span style="position: relative; bottom: -2px;">
+							<input  id="check222" type="checkbox" name="check" value="850">
+							<label for="check222"><!-- Checkbox No. 2 --></label>
+						</span>
+					</div>
+					
+				</div>
+              <!-- <label class="zakalka_label"for="zakalka">Закалка</label>
+              <input class="zakalka_input" type="checkbox" id="zakalka" name="zakalka"> -->
             </div>
 					</div>
 				</td>
@@ -330,10 +356,10 @@ $(function(){
 				<td>
 					<div class="deliverys">Доставка:</div>
 					<div class="deliv_type" data-dos1="1500" data-dos2="3000" data-dos3="30" data-minimal="1000" data-maximum="1800">
-						<select>
+						<select class="distance">
 							<option value="1">по Москве в пределах МКАД (без въезда в ТТК)</option>
 							<option value="2">по Москве (внутри ТТК)</option>
-              <option value="3">за пределы МКАД</option>
+              				<option value="3">за пределы МКАД</option>
 							<option value="4">Самовывоз</option>
 						</select>
 					</div>
