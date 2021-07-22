@@ -187,7 +187,10 @@ top: 0; left: 52px; content: '';}
 }
 .form_figure{
     width: 200px;
-    
+}
+
+.active_figure {
+    background: #0088cc;
 }
 .form_figure span {
     font-size: 15px;
@@ -196,6 +199,8 @@ top: 0; left: 52px; content: '';}
     padding-top: 10px;
     width: 180px;
     height: auto;
+    padding: 6px;
+    border: 1px solid #dddddd;
 }
 .zakalka_input{
     display: inline!important;
